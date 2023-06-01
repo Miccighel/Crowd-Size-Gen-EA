@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="baseLogFileName">${sys:baseLogFileName}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Main" target="SYSTEM_OUT">
+            <PatternLayout>
+                <LevelPatternSelector>
+                    <PatternMatch key="INFO" pattern="%-5.5p [%d{HH:mm:ss} %-8.8t %-17.-17C{1} %-9M] %m%n"/>
+                    <PatternMatch key="DEBUG" pattern="%-5.5p [%d{HH:mm:ss} %-8.8t %-17.-17C{1} %-9M] %m%n"/>
+                </LevelPatternSelector>
+            </PatternLayout>
+        </Console>
+        <Console name="Console-Program" target="SYSTEM_OUT">
+            <PatternLayout>
+                <LevelPatternSelector>
+                    <PatternMatch key="INFO" pattern="%-5.5p [%d{HH:mm:ss} %-8.8t %-17.-17C{1} %-9M] %m%n"/>
+                    <PatternMatch key="DEBUG" pattern="%-5.5p [%d{HH:mm:ss} %-8.8t %-17.-17C{1} %-9M] %m%n"/>
+                </LevelPatternSelector>
+            </PatternLayout>
+        </Console>
+        <RollingFile name="Rolling" fileName="${baseLogFileName}" filePattern="${baseLogFileName}-%i.log" append="false">
+            <PatternLayout pattern="%-5.5p [%d{HH:mm:ss} %-8.8t %-17.-17C{1} %-9M] %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="warn">
+            <AppenderRef ref="Console-Main"/>
+        </Root>
+        <Logger name="Program" additivity="false">
+            <AppenderRef ref="Console-Program"/>
+        </Logger>
+    </Loggers>
+</Configuration>

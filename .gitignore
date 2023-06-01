@@ -1,3 +1,38 @@
+.idea/
+
+.gradle
+!src/**/build/
+
+
+###############################
+# Un-ignore the affected subdirectory
+!/build/
+# Ignore subdirectory and all including directories and files to match pattern as valid for the next pattern
+/build/*
+# This pattern only works with the two previous patterns
+# (i remember it was working alone on older git versions)
+!/build/libs/
+###############################
+
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
+# Cache of project
+.gradletasknamecache
+
+# Eclipse Gradle plugin generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
 # Compiled class file
 *.class
 
@@ -11,7 +46,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
